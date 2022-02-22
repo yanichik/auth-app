@@ -13,5 +13,5 @@ const SignupForm = (props) => {
 			<button type="submit">Signup</button>
 		</form>
 	);
-};
+};  
 export default SignupForm;
