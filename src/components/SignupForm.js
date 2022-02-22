@@ -1,5 +1,8 @@
 const SignupForm = (props) => {
-	const submitHandler = () => {};
+	const submitHandler = (event) => {
+		event.preventDefault();
+		props.onSignup();
+	};
 	return (
 		<form onSubmit={submitHandler}>
 			<div>
@@ -8,10 +11,10 @@ const SignupForm = (props) => {
 			</div>
 			<div>
 				<label htmlFor="password">Password</label>
-				<input type="text" id="password" />
+				<input type="password" id="password" />
 			</div>
 			<button type="submit">Signup</button>
 		</form>
 	);
-};  
+};
 export default SignupForm;
