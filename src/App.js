@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Logout from "./components/Auth/Logout";
 import MainNavigation from "./components/Layout/MainNavigation";
@@ -11,7 +11,14 @@ function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const logoutHandler = () => {
 		setLoggedIn(false);
+		localStorage.clear();
 	};
+	useEffect(() => {
+		const loginStatus = localStorage.getItem("loggedIn");
+		console.log("loginStatus: " + loginStatus);
+		setLoggedIn(loginStatus);
+	}, []);
+	console.log(loggedIn);
 	return (
 		<div className="App">
 			<MainNavigation loggedIn={loggedIn} onLogout={logoutHandler}>

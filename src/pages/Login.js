@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/Auth/LoginForm";
 const Login = (props) => {
 	const navigate = useNavigate();
+	let error;
 	const loginHandler = (data) => {
 		console.log(data);
-		props.setLoggedIn(true);
 		fetch(
 			"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAg7hKEJZQz6TCgVGOqbcLcmnZOwLBsyuc",
 			{
@@ -14,15 +14,36 @@ const Login = (props) => {
 				},
 				body: JSON.stringify({ ...data, returnSecureToke: true }),
 			}
-		).then((res) => {
-			// useNavigate (...) is v6 instead of useHistory from v5. no longer need "".push"
-			navigate("/");
-		});
+		)
+			.then((res) => {
+				if (!res.ok) {
+					console.log(res);
+					error = data.error.message;
+					throw new Error(error);
+				}
+				console.log("check");
+				props.setLoggedIn(true);
+				res.json().then((data) => {
+					console.log(data);
+					localStorage.setItem("token", data.idToken);
+					localStorage.setItem("email", data.email);
+					localStorage.setItem("loggedIn", true);
+					navigate("/");
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+				error = err;
+			});
 	};
 	return (
 		<div>
 			<h2>Login</h2>
-			<LoginForm onLogin={loginHandler} loggedIn={props.loggedIn} />
+			<LoginForm
+				onLogin={loginHandler}
+				loggedIn={props.loggedIn}
+				error={error}
+			/>
 		</div>
 	);
 };

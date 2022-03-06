@@ -2,6 +2,7 @@ import { useRef } from "react";
 const LoginForm = (props) => {
 	const pwRef = useRef();
 	const userRef = useRef();
+	console.log("error: " + props.error);
 	const submitHandler = (event) => {
 		event.preventDefault();
 		const email = userRef.current.value;

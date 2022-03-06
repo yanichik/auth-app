@@ -14,8 +14,16 @@ const Signup = (props) => {
 				},
 				body: JSON.stringify({ ...data, returnSecureToke: true }),
 			}
-		);
-		navigate("/");
+		).then((res) => {
+			props.setLoggedIn(true);
+			res.json().then((data) => {
+				console.log(data);
+				localStorage.setItem("token", data.idToken);
+				localStorage.setItem("email", data.email);
+				localStorage.setItem("loggedIn", true);
+				navigate("/");
+			});
+		});
 	};
 	return (
 		<div>
