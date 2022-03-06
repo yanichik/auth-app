@@ -9,9 +9,11 @@ const MainNavigation = (props) => {
 			<header>
 				<nav className={styles.nav}>
 					<ul>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
+						{props.loggedIn && (
+							<li>
+								<Link to="/home">Home</Link>
+							</li>
+						)}
 						{!props.loggedIn && (
 							<li>
 								<Link to="/signup">Sign Up</Link>
@@ -19,7 +21,7 @@ const MainNavigation = (props) => {
 						)}
 						{!props.loggedIn && (
 							<li>
-								<Link to="/Login">Login</Link>
+								<Link to="/login">Login</Link>
 							</li>
 						)}
 						{props.loggedIn && (

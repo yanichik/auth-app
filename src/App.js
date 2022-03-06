@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Logout from "./components/Auth/Logout";
 import MainNavigation from "./components/Layout/MainNavigation";
 import Home from "./pages/Home";
@@ -22,9 +22,9 @@ function App() {
 	return (
 		<div className="App">
 			<MainNavigation loggedIn={loggedIn} onLogout={logoutHandler}>
-				{loggedIn && <Logout onLogout={logoutHandler} />}
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Navigate to="/signup" />} />
+					<Route path="/home" element={<Home />} />
 					<Route
 						path="/login"
 						element={<Login setLoggedIn={setLoggedIn} loggedIn={loggedIn} />}
@@ -34,6 +34,7 @@ function App() {
 						element={<Signup setLoggedIn={setLoggedIn} loggedIn={loggedIn} />}
 					/>
 				</Routes>
+				{loggedIn && <Logout onLogout={logoutHandler} />}
 			</MainNavigation>
 		</div>
 	);

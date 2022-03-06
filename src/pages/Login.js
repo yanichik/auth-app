@@ -28,7 +28,7 @@ const Login = (props) => {
 					localStorage.setItem("token", data.idToken);
 					localStorage.setItem("email", data.email);
 					localStorage.setItem("loggedIn", true);
-					navigate("/");
+					navigate("/home");
 				});
 			})
 			.catch((err) => {
