@@ -15,16 +15,25 @@ function App() {
 	};
 	useEffect(() => {
 		const loginStatus = localStorage.getItem("loggedIn");
-		console.log("loginStatus: " + loginStatus);
+		// console.log("loginStatus: " + loginStatus);
 		setLoggedIn(loginStatus);
 	}, []);
-	console.log(loggedIn);
+	// console.log(loggedIn);
 	return (
 		<div className="App">
 			<MainNavigation loggedIn={loggedIn} onLogout={logoutHandler}>
 				<Routes>
 					<Route path="/" element={<Navigate to="/signup" />} />
-					<Route path="/home" element={<Home />} />
+					<Route
+						path="/home"
+						element={
+							localStorage.getItem("loggedIn") ? (
+								<Home />
+							) : (
+								<Navigate to="/signup" />
+							)
+						}
+					/>
 					<Route
 						path="/login"
 						element={<Login setLoggedIn={setLoggedIn} loggedIn={loggedIn} />}

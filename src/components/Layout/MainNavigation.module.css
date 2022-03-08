@@ -1,15 +1,16 @@
 ul {
 	display: flex;
 	list-style-type: none;
-	position: relative;
+	position: absolute;
+	width: 100vw;
+	left: 0;
 	top: 0;
 	padding: 0;
 	margin: 0;
 	/* height: 2em; */
 	justify-content: flex-end;
 	align-items: center;
-	background-color: sandybrown;
-	font-family: monospace;
+	background-color: #ff4b2b;
 }
 
 li {
@@ -18,6 +19,17 @@ li {
 }
 
 li:hover {
-	background-color: green;
-/* height: inherit; */
+	color: blue;
+	/* height: inherit; */
+}
+
+.link {
+	color: white;
+	font-weight: bold;
+	font-family: "Montserrat", sans-serif;
+	font-size: 12px;
+}
+
+.link:hover {
+	color: black;
 }

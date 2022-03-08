@@ -2,7 +2,6 @@ import { useRef } from "react";
 const LoginForm = (props) => {
 	const pwRef = useRef();
 	const userRef = useRef();
-	console.log("error: " + props.error);
 	const submitHandler = (event) => {
 		event.preventDefault();
 		const email = userRef.current.value;
@@ -19,16 +18,14 @@ const LoginForm = (props) => {
 		<div>
 			<form onSubmit={submitHandler}>
 				<div>
-					<label htmlFor="email">Email</label>
-					<input type="text" id="email" ref={userRef} />
+					<input type="text" id="email" ref={userRef} placeholder="Email"/>
 				</div>
 				<div>
-					<label htmlFor="password">Password</label>
-					<input type="password" id="password" ref={pwRef} />
+					<input type="password" id="password" ref={pwRef} placeholder="Password"/>
 				</div>
 				<button type="submit">Login</button>
 			</form>
-			{!props.loggedIn && <p>Logged Out</p>}
+			{/* {!props.loggedIn && <p>Logged Out</p>} */}
 		</div>
 	);
 };

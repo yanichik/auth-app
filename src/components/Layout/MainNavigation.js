@@ -11,22 +11,28 @@ const MainNavigation = (props) => {
 					<ul>
 						{props.loggedIn && (
 							<li>
-								<Link to="/home">Home</Link>
+								<Link to="/home" className={styles.link}>
+									Home
+								</Link>
 							</li>
 						)}
 						{!props.loggedIn && (
 							<li>
-								<Link to="/signup">Sign Up</Link>
+								<Link to="/signup" className={styles.link}>
+									Sign Up
+								</Link>
 							</li>
 						)}
 						{!props.loggedIn && (
 							<li>
-								<Link to="/login">Login</Link>
+								<Link to="/login" className={styles.link}>
+									Login
+								</Link>
 							</li>
 						)}
 						{props.loggedIn && (
 							<li>
-								<Link to="/" onClick={logoutHandler}>
+								<Link to="/" onClick={logoutHandler} className={styles.link}>
 									Logout
 								</Link>
 							</li>

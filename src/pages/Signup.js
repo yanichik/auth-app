@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupForm from "../components/Auth/SignupForm";
+import ToLoginWindow from "../components/Auth/ToLoginWindow";
+import styles from "../components/Auth/Auth.module.css";
 const Signup = (props) => {
 	const navigate = useNavigate();
+	const [error, setError] = useState("");
 	const signupHandler = (data) => {
-		console.log(data);
-		props.setLoggedIn(true);
+		// console.log(data);
 		fetch(
 			"https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAg7hKEJZQz6TCgVGOqbcLcmnZOwLBsyuc",
 			{
@@ -15,20 +18,37 @@ const Signup = (props) => {
 				body: JSON.stringify({ ...data, returnSecureToke: true }),
 			}
 		).then((res) => {
-			props.setLoggedIn(true);
-			res.json().then((data) => {
-				console.log(data);
-				localStorage.setItem("token", data.idToken);
-				localStorage.setItem("email", data.email);
-				localStorage.setItem("loggedIn", true);
-				navigate("/");
-			});
+			res
+				.json()
+				.then((data) => {
+					if (!res.ok) {
+						console.log(res);
+						setError(data.error.message);
+						throw new Error(data.error.message);
+					}
+					props.setLoggedIn(true);
+					// console.log(data);
+					localStorage.setItem("token", data.idToken);
+					localStorage.setItem("email", data.email);
+					localStorage.setItem("loggedIn", true);
+					navigate("/home");
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 		});
 	};
 	return (
 		<div>
-			<h2>Sign Up</h2>
-			<SignupForm onSignup={signupHandler} loggedIn={props.loggedIn} />
+			{props.message && <p>{props.message}</p>}
+			<div className={styles.signupPage}>
+				<div className={styles.signupSideOfWindow}>
+					<h2>Sign Up</h2>
+					<SignupForm onSignup={signupHandler} loggedIn={props.loggedIn} />
+				</div>
+				<ToLoginWindow />
+			</div>
+			{error.length > 0 ? <p>{error}</p> : ""}
 		</div>
 	);
 };

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import styles from "./Auth.module.css";
 const SignupForm = (props) => {
 	const pwRef = useRef();
 	const userRef = useRef();
@@ -15,19 +16,22 @@ const SignupForm = (props) => {
 		});
 	};
 	return (
-		<div>
+		<div className={[styles.formContainer, styles.signinContainer].join(" ")}>
 			<form onSubmit={submitHandler}>
 				<div>
-					<label htmlFor="email">Email</label>
-					<input type="text" id="email" ref={userRef} />
+					<input type="text" id="email" ref={userRef} placeholder="Email" />
 				</div>
 				<div>
-					<label htmlFor="password">Password</label>
-					<input type="password" id="password" ref={pwRef} />
+					<input
+						type="password"
+						id="password"
+						ref={pwRef}
+						placeholder="Password"
+					/>
 				</div>
 				<button type="submit">Sign Up</button>
 			</form>
-			{!props.loggedIn && <p>Logged Out</p>}
+			{/* {!props.loggedIn && <p>Logged Out</p>} */}
 		</div>
 	);
 };

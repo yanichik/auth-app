@@ -4,7 +4,7 @@ const Logout = (props) => {
 	};
 	return (
 		<div>
-			<p>Logged In</p>
+			{/* <p>Logged In</p> */}
 			<button onClick={logoutHandler}>Click to Logout</button>
 		</div>
 	);

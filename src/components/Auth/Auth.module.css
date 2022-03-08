@@ -1,0 +1,101 @@
+* {
+	box-sizing: border-box;
+}
+
+/* .formContainer {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+} */
+
+.signinContainer {
+	display: flex;
+	justify-content: center;
+	left: 0;
+	width: 100%;
+	z-index: 2;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid #ff4b2b;
+	background-color: #ff4b2b;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 6px 20px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	cursor: pointer;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+/* button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+} */
+
+form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px 50px;
+	height: 100%;
+	text-align: center;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 300px;
+}
+
+.toLoginWindow {
+	display: flex;
+	flex-direction: column;
+	background-color: #ff4b2b;
+	color: #ffffff;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+.toLoginWindow button {
+	border-radius: 20px;
+	border: 1px solid #ffffff;
+	background-color: #ff4b2b;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 6px 20px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+.toLoginWindowContent {
+	padding: 10% 15%;
+}
+
+.signupPage {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: repeat(2, 400px);
+	background-color: #ffffff;
+	border-radius: 15px;
+}
+
+.signupSideOfWindow {
+	display: flex;
+	flex-direction: column;
+}
