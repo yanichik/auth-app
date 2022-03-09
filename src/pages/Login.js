@@ -26,11 +26,10 @@ const Login = (props) => {
 						setError(data.error.message);
 						throw new Error(data.error.message);
 					}
-					props.setLoggedIn(true);
-					// console.log(data);
 					localStorage.setItem("token", data.idToken);
 					localStorage.setItem("email", data.email);
 					localStorage.setItem("loggedIn", true);
+					props.setLoggedIn(true);
 					navigate("/home");
 				})
 				.catch((err) => {
