@@ -62,15 +62,15 @@ input {
 	width: 300px;
 }
 
-.toLoginWindow {
+.toLoginAndSignupWindows {
 	display: flex;
 	flex-direction: column;
 	background-color: #ff4b2b;
 	color: #ffffff;
-	border-top-right-radius: 15px;
-	border-bottom-right-radius: 15px;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
-.toLoginWindow button {
+.toLoginAndSignupWindows button {
 	border-radius: 20px;
 	border: 1px solid #ffffff;
 	background-color: #ff4b2b;
@@ -83,11 +83,11 @@ input {
 	transition: transform 80ms ease-in;
 }
 
-.toLoginWindowContent {
+.toLoginAndSignupWindowContent {
 	padding: 10% 15%;
 }
 
-.signupPage {
+.signupPage, .loginPage{
 	display: grid;
 	grid-auto-flow: column;
 	grid-template-columns: repeat(2, 400px);
@@ -95,7 +95,7 @@ input {
 	border-radius: 15px;
 }
 
-.signupSideOfWindow {
+.signupSideOfWindow, .loginSideOfWindow {
 	display: flex;
 	flex-direction: column;
 }

@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import styles from "./Auth.module.css";
-const ToLoginWindow = () => {
+const ToSignupWindow = () => {
 	return (
 		<div className={styles.toLoginAndSignupWindows}>
 			<div className={styles.toLoginAndSignupWindowContent}>
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<Link to="/login">
-					<button>Login</button>
+				<h1>Hello Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<Link to="/signup">
+					<button>Signup</button>
 				</Link>
 			</div>
 		</div>
 	);
 };
-export default ToLoginWindow;
+export default ToSignupWindow;

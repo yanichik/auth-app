@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import LoginForm from "../components/Auth/LoginForm";
+import ToSignupWindow from "../components/Auth/ToSignupWindow";
+import styles from "../components/Auth/Auth.module.css";
 const Login = (props) => {
 	const navigate = useNavigate();
 	const [error, setError] = useState("");
@@ -38,8 +40,13 @@ const Login = (props) => {
 	};
 	return (
 		<div>
-			<h2>Login</h2>
-			<LoginForm onLogin={loginHandler} loggedIn={props.loggedIn} />
+			<div className={styles.loginPage}>
+				<div className={styles.loginSideOfWindow}>
+					<h2>Login</h2>
+					<LoginForm onLogin={loginHandler} loggedIn={props.loggedIn} />
+				</div>
+				<ToSignupWindow />
+			</div>
 			{error.length > 0 ? <p>{error}</p> : ""}
 		</div>
 	);
