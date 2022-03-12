@@ -41,11 +41,11 @@ const Signup = (props) => {
 		<div>
 			{props.message && <p>{props.message}</p>}
 			<div className={styles.signupPage}>
+				<ToLoginWindow />
 				<div className={styles.signupSideOfWindow}>
 					<h2>Sign Up</h2>
 					<SignupForm onSignup={signupHandler} loggedIn={props.loggedIn} />
 				</div>
-				<ToLoginWindow />
 			</div>
 			{error.length > 0 ? <p>{error}</p> : ""}
 		</div>
