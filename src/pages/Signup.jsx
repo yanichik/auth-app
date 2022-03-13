@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import SignupForm from "../components/Auth/SignupForm";
 import ToLoginWindow from "../components/Auth/ToLoginWindow";
 import styles from "../components/Auth/Auth.module.css";
+import AnimatedSignup from "../animate/AnimatedSignup";
 const Signup = (props) => {
 	const navigate = useNavigate();
 	const [error, setError] = useState("");
@@ -38,7 +39,7 @@ const Signup = (props) => {
 		});
 	};
 	return (
-		<div>
+		<AnimatedSignup>
 			{props.message && <p>{props.message}</p>}
 			<div className={styles.signupPage}>
 				<ToLoginWindow />
@@ -48,7 +49,7 @@ const Signup = (props) => {
 				</div>
 			</div>
 			{error.length > 0 ? <p>{error}</p> : ""}
-		</div>
+		</AnimatedSignup>
 	);
 };
 export default Signup;

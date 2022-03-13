@@ -3,6 +3,7 @@ import { useState } from "react";
 import LoginForm from "../components/Auth/LoginForm";
 import ToSignupWindow from "../components/Auth/ToSignupWindow";
 import styles from "../components/Auth/Auth.module.css";
+import AnimatedLogin from "../animate/AnimatedLogin";
 const Login = (props) => {
 	const navigate = useNavigate();
 	const [error, setError] = useState("");
@@ -38,7 +39,7 @@ const Login = (props) => {
 		});
 	};
 	return (
-		<div>
+		<AnimatedLogin>
 			<div className={styles.loginPage}>
 				<div className={styles.loginSideOfWindow}>
 					<h2>Login</h2>
@@ -47,7 +48,7 @@ const Login = (props) => {
 				<ToSignupWindow />
 			</div>
 			{error.length > 0 ? <p>{error}</p> : ""}
-		</div>
+		</AnimatedLogin>
 	);
 };
 export default Login;
